@@ -1,29 +1,22 @@
-#include <stdio.h>
-
-struct date {
-	int month;
-	int day;
-	int year;
-};
+# include <stdio.h>
+# include <string.h>
+#define SIZE 3
 
 struct student {
-	int number;
-	char name[20];
-	double grade;
-	struct date* dob;
+    int number;
+    char name[20];
+    double grade;
 };
 
 int main(void)
 {
-	struct date d = { 3, 20, 2000 };
-	struct student s = { 1, "Kim", 4.3 };
+    struct student s = { 24, "Kim", 4.2 };
+    struct student *p;
 
-	s.dob = &d;
+    p = &s;
 
-	printf("학번: %d\n", s.number);
-	printf("이름: %s\n", s.name);
-	printf("학점: %lf\n", s.grade);
-	printf("생년월일: %d년 %d월 %d일\n", s.dob->year, s.dob->month, s.dob->day);
+    printf("학번=%d 이름=%s 학점=%f", s.number, s.name, s.grade);
+    printf("학번=%d 이름=%s 학점=%f", (*p).number, (*p).name, (*p).grade);
 
-	return 0;
+    return 0;
 }
